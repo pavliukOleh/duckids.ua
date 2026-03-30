@@ -1,7 +1,7 @@
 @use "./tokens" as *;
 
 /// Хвиля під посиланням (hover + focus) — плавна поява/зникнення через opacity на ::after
-@mixin link-wave-underline($wave-url: "/icons/nav-link-wave.svg") {
+@mixin link-wave-underline($wave-url: "../assets/icons/nav-link-wave.svg") {
   text-decoration: none;
   position: relative;
   display: inline-block;
@@ -45,7 +45,7 @@
 
 /// Футер: світліша хвиля на темному фоні
 @mixin link-wave-underline-on-dark {
-  @include link-wave-underline("/icons/nav-link-wave-footer.svg");
+  @include link-wave-underline("../assets/icons/nav-link-wave-footer.svg");
 
   &:focus-visible {
     outline: 2px solid rgba(255, 255, 255, 0.95);

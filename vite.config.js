@@ -88,28 +88,37 @@ function getMime(filename) {
   return "application/octet-stream";
 }
 
-export default defineConfig({
-  plugins: [
-    serveRawImages(),
-    serveIcons(),
-    tailwindcss(),
-    handlebars({
-      partialDirectory: resolve(__dirname, "src/partials"),
-      context: {
-        siteName: "Vite + Tailwind v4 (Hybrid SCSS)",
-        metaDescription:
-          "Швидка збірка для верстки: HTML/SCSS/JS, Tailwind v4, partials, vendor.js, env, оптимізація зображень.",
+/** Має збігатися з назвою репозиторію на GitHub (шлях сайту: /REPO/). */
+const GITHUB_PAGES_BASE = "/duckids.ua/";
+
+export default defineConfig(({ mode }) => {
+  const base = mode === "gh-pages" ? GITHUB_PAGES_BASE : "/";
+
+  return {
+    base,
+    plugins: [
+      serveRawImages(),
+      serveIcons(),
+      tailwindcss(),
+      handlebars({
+        partialDirectory: resolve(__dirname, "src/partials"),
+        context: {
+          siteName: "Vite + Tailwind v4 (Hybrid SCSS)",
+          metaDescription:
+            "Швидка збірка для верстки: HTML/SCSS/JS, Tailwind v4, partials, vendor.js, env, оптимізація зображень.",
+          baseUrl: base,
+        },
+      }),
+    ],
+    resolve: {
+      alias: {
+        "@": resolve(__dirname, "src"),
       },
-    }),
-  ],
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "src"),
     },
-  },
-  build: {
-    rollupOptions: {
-      input: htmlInputs(),
+    build: {
+      rollupOptions: {
+        input: htmlInputs(),
+      },
     },
-  },
+  };
 });
