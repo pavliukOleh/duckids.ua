@@ -11,3 +11,8 @@
 @use "./components/team";
 @use "./components/feedback";
 @use "./components/footer";
+
+// Якорі: блок під фіксованим хедером не перекривається при переході по #
+.page--with-fixed-header {
+  scroll-padding-top: 5.5rem;
+}
