@@ -1,0 +1,199 @@
+@use "../tokens" as *;
+
+// Секція «Наша команда» — #E0F4F8, хвилі, картка Team Card (UI Kit)
+.team {
+  position: relative;
+  background: $color-bg-blue;
+  padding-bottom: 0;
+}
+
+// Хвилі — фон repeat-x, на 1440px+ плитка 1440px
+.team__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 20px;
+  min-height: 20px;
+  pointer-events: none;
+  line-height: 0;
+  z-index: 2;
+  background-image: url("/icons/Divider-Waves.svg");
+  background-repeat: repeat-x;
+  background-position: center;
+
+  @media (min-width: 1440px) {
+    background-size: 1440px 20px;
+  }
+}
+
+.team__wave--top {
+  top: -20px;
+}
+
+.team__wave--bottom {
+  bottom: -20px;
+  transform: rotate(180deg);
+}
+
+.team__inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+
+  @media (min-width: 1024px) {
+    padding-top: $section-padding-y-desktop;
+    padding-bottom: $section-padding-y-desktop;
+  }
+}
+
+// H2 секції — 46px / 1, центр (як у макеті)
+.team__title {
+  margin: 0 0 16px 0;
+  font-size: $font-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-h2;
+  letter-spacing: 0;
+  color: $color-text;
+  text-align: center;
+}
+
+// Підзаголовок — H3 Desktop: 24px, SemiBold, letter-spacing -0.01em
+.team__subtitle {
+  max-width: 550px;
+  margin: 0 auto 40px;
+  font-size: $font-h3;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-h3;
+  line-height: $line-h3;
+  color: $color-text;
+  text-align: center;
+}
+
+.team__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team__photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 530px;
+  margin-bottom: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0% 0% 0% 0%;
+    background-image: url("/img/raw/ourTeamEllipse.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.team__photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 530px;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+
+// Картка інфо — білий фон, радіус як у дизайн-системи (1rem)
+.team__info {
+  background: $color-white;
+  border-radius: $radius-card;
+  padding: 8px 12px;
+  width: 100%;
+  max-width: 380px;
+}
+
+// Ім’я — SemiBold ~20px (карточний заголовок)
+.team__name {
+  margin: 0 0 0.25rem 0;
+  font-size: 24px;
+  font-weight: $font-weight-semibold;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: $color-text;
+}
+
+// Роль — Body Medium 16px
+.team__role {
+  margin: 0 0 0.5rem 0;
+  font-size: 22px;
+  font-weight: $font-weight-medium;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: $color-text;
+}
+
+// Досвід — дрібніший текст, другорядний колір (Grey з UI Kit)
+.team__experience {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color:$color-text;
+}
+
+// Опис — 14px, Text Label / приглушений
+.team__desc {
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: $color-text;
+  max-width: 300px;
+}
+
+@media (max-width: 1023px) {
+
+  .team__list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // H2 mobile — 28px / 1
+  .team__title {
+    font-size: $font-hero-h1-mobile;
+    line-height: 1;
+  }
+
+  // H3 mobile у макеті — 18px
+  .team__subtitle {
+    font-size: $font-hero-lead-mobile;
+    line-height: 1.35;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+    max-width: none;
+  }
+}

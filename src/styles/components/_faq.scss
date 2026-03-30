@@ -1,0 +1,168 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+// Секція «Часті запитання» — акордеон, плавне відкриття/закриття, обертання стрілки
+.faq {
+  background: $color-bg-page-alt;
+  padding: 2.5rem 0 3rem;
+
+  @media (min-width: 1024px) {
+    padding: $section-padding-y-desktop 0 3rem;
+  }
+}
+
+.faq__inner {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.faq__title {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp($font-hero-h1-mobile, 5vw, $font-h2);
+  font-weight: $font-weight-semibold;
+  line-height: $line-h2;
+  color: $color-text;
+  text-align: center;
+}
+
+.faq__intro {
+  margin: 0 0 2rem 0;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-text;
+  text-align: center;
+}
+
+.faq__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq__item {
+  margin-bottom: 0.75rem;
+  background: $color-white;
+  border-radius: $radius-card;
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.faq__term {
+  margin: 0;
+}
+
+.faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border: none;
+  border-radius: $radius-card;
+  background: transparent;
+  color: $color-text;
+  font: inherit;
+  font-weight: $font-weight-semibold;
+  font-size: 17px;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.faq__question {
+  flex: 1;
+  min-width: 0;
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $icon-nav-size;
+  height: $icon-nav-size;
+  border-radius: 50%;
+  background: $color-primary;
+  color: $color-text;
+  @include primary-icon-soft-halo;
+
+  svg {
+    width: 7px;
+    height: 14px;
+    /* закритий: стрілка вниз */
+    transform: rotate(90deg);
+    transition: transform 0.35s ease;
+  }
+}
+
+.faq__trigger:hover .faq__icon,
+.faq__trigger:focus-visible .faq__icon {
+  @include primary-icon-soft-halo--active;
+}
+
+.faq__item.is-open .faq__icon svg {
+  /* відкритий: стрілка вгору */
+  transform: rotate(-90deg);
+}
+
+.faq__body {
+  margin: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.faq__item.is-open .faq__body {
+  grid-template-rows: 1fr;
+}
+
+.faq__content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.faq__content p {
+  margin: 0;
+  padding: 0 1.5rem 1.25rem 1.5rem;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: $color-text;
+}
+
+@media (max-width: 768px) {
+  .faq {
+    padding: 3.5rem 0 1rem;
+  }
+
+  .faq__intro {
+    margin-bottom: 1.5rem;
+    font-size: 16px;
+  }
+
+  .faq__trigger {
+    padding: 1rem 1.25rem;
+    font-size: 16px;
+  }
+
+  .faq__content p {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-bottom: 1rem;
+    font-size: 15px;
+  }
+}

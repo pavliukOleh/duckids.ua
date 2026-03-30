@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{metaDescription}}" />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{{siteName}} • Home</title>
+  </head>
+
+  <body class="page page--with-fixed-header">
+    {{> header}}
+
+    <main class="main">
+      {{> hero}}
+      {{> consultation}}
+      {{> help}}
+      {{> team}}
+      {{> space}}
+      {{> testimonials}}
+      {{> faq}}
+      {{> feedback}}
+    </main>
+
+    {{> footer}}
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

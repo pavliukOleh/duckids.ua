@@ -1,0 +1,275 @@
+@use "../tokens" as *;
+
+// Форма зворотного зв'язку — дві колонки, кастомні радіо (як у макеті), товсті бордери полів
+.feedback {
+  background: $color-bg-page;
+  padding: 3rem 0 4rem;
+
+  @media (min-width: 1024px) {
+    padding: $section-padding-y-desktop 0 5rem;
+  }
+}
+
+.feedback__inner {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.feedback__title {
+  margin: 0 0 2.5rem 0;
+  font-size: $font-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-h2;
+  letter-spacing: 0;
+  color: $color-text;
+  text-align: center;
+}
+
+.feedback__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.feedback__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.feedback__contact-item {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-text;
+
+  strong {
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.feedback__img {
+  margin-top: 1rem;
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.feedback__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.feedback__field,
+.feedback__fieldset {
+  margin: 0;
+}
+
+.feedback__fieldset {
+  border: none;
+  padding: 0;
+}
+
+.feedback__fieldset + .feedback__fieldset {
+  margin-top: 0.25rem;
+}
+
+.feedback__label,
+.feedback__fieldset .feedback__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+}
+
+.feedback__input,
+.feedback__textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: $color-text;
+  background: $color-input-bg;
+  border: 2px solid $color-input-border;
+  border-radius: $radius-card;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: rgba(255, 224, 70, 0.75);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px $color-focus-ring;
+  }
+}
+
+.feedback__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.feedback__radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.feedback__radios--row {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem 2rem;
+}
+
+.feedback__radios--stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+// Кастомні радіо: коло з товстим бордером, сірий default / жовтий обраний
+$radio-ring: #a8a8a8;
+$radio-size: 20px;
+
+.feedback__radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 16px;
+  font-weight: 400;
+  color: $color-text;
+  cursor: pointer;
+  position: relative;
+  padding: 0.15rem 0;
+}
+
+.feedback__radio-text {
+  line-height: 1.35;
+}
+
+.feedback__radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+
+.feedback__radio-label::before {
+  content: "";
+  flex-shrink: 0;
+  width: $radio-size;
+  height: $radio-size;
+  border-radius: 50%;
+  border: 2.5px solid $radio-ring;
+  background: transparent;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feedback__radio-label:has(.feedback__radio:checked)::before {
+  border-color: $color-primary;
+}
+
+.feedback__radio-label:hover::before {
+  border-color: rgba(255, 224, 70, 0.85);
+}
+
+.feedback__radio-label:has(.feedback__radio:checked):hover::before {
+  border-color: $color-primary-hover;
+}
+
+.feedback__radio-label:has(.feedback__radio:focus-visible)::before {
+  box-shadow: 0 0 0 3px rgba(255, 224, 70, 0.35);
+}
+
+.feedback__privacy {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #666;
+}
+
+.feedback__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $btn-primary-min-height;
+  padding: $btn-primary-padding-y $btn-primary-padding-x;
+  background: $color-primary;
+  color: $color-text;
+  font-size: $btn-primary-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  border: none;
+  border-radius: $btn-primary-radius;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    background: $color-primary-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .feedback__title {
+    font-size: $font-hero-h1-mobile;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .feedback__body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feedback__contact {
+    order: 2;
+    text-align: center;
+  }
+
+  .feedback__img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feedback__form {
+    order: 1;
+  }
+
+  .feedback__radios--row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

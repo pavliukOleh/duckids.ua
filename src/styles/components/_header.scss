@@ -1,0 +1,277 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+// Fixed header: top 24px
+.site-header {
+  position: fixed;
+  top: 24px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 24px;
+}
+
+.site-header__wrap {
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $header-inner-gap;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $color-text;
+  font-weight: $font-weight-semibold;
+  font-size: $btn-primary-font-size;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  border-radius: 6px;
+
+  &:hover {
+    color: $color-text;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+}
+
+.site-header__logo-icon {
+  flex-shrink: 0;
+  width: 71px;
+  height: 44px;
+  object-fit: contain;
+}
+
+// Бургер — тільки на мобільному
+.site-header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $color-text;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.site-header__burger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: $header-nav-gap;
+}
+
+.site-header__nav-link {
+  color: $color-text;
+  font-size: $btn-primary-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  letter-spacing: 0;
+  @include link-wave-underline;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.site-header__cta {
+  min-height: $btn-primary-min-height;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $btn-primary-padding-y $btn-primary-padding-x;
+  background: $color-primary;
+  color: $color-text;
+  font-size: $btn-primary-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  border: none;
+  border-radius: $btn-primary-radius;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s ease;
+
+  &:hover {
+    background: $color-primary-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// Відступ для main, щоб контент не ховався під фіксованим хедером
+.page--with-fixed-header .main {
+  padding-top: 5.5rem; // висота хедера + top 24px
+}
+
+// ---------- Мобільний хедер (top 16px, бургер замість навігації) — з 1023px ----------
+$mobile-breakpoint: 1023px;
+
+@media (max-width: $mobile-breakpoint) {
+  .site-header {
+    top: 16px;
+    padding: 0 16px;
+  }
+
+  .site-header__inner {
+    padding: 0.5rem 1rem;
+    max-width: stretch; /* не схлопується: ширина по контенту (лого + бургер) */
+    min-width: min-content;
+    gap: 1rem;
+  }
+
+  .site-header__nav,
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-header__burger {
+    display: flex;
+  }
+
+  .page--with-fixed-header .main {
+    padding-top: 5rem; // менший відступ на мобільному
+  }
+}
+
+// ---------- Мобільне меню (повноекранний оверлей) ----------
+$mobile-menu-bg: #fffbf4;
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: $mobile-menu-bg;
+  padding: 0 24px;
+  overflow: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.25s, opacity 0.25s;
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.mobile-menu__inner {
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 16px; // той самий відступ зверху, як у мобільному хедері (top: 16px)
+}
+
+// Лого + хрестик на одному рівні з мобільним хедером (та сама висота рядка)
+.mobile-menu__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px; // орієнтовно як site-header__inner на мобілі (padding + лого 44px)
+  margin-bottom: 2rem;
+}
+
+.mobile-menu__logo {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.mobile-menu__logo-icon {
+  width: 71px;
+  height: 44px;
+  object-fit: contain;
+}
+
+// Хрестик закриття 44×44, на одному рівні з лого
+.mobile-menu__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: $color-text;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
+
+.mobile-menu__link {
+  color: $color-text;
+  font-size: 22px;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  @include link-wave-underline;
+
+  &:hover {
+    color: $color-text;
+  }
+}

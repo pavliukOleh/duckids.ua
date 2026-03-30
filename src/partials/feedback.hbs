@@ -1,0 +1,47 @@
+<section id="feedback" class="feedback" aria-labelledby="feedback-title">
+  <div class="feedback__inner container">
+    <h2 id="feedback-title" class="feedback__title">Зв'яжіться з нами — ми поруч, щоб допомогти.</h2>
+    <div class="feedback__body">
+      <div class="feedback__contact">
+        <p class="feedback__contact-item"><strong>Адреса</strong><br>м. Київ, Проспект Леся Курбаса 1К2</p>
+        <p class="feedback__contact-item"><strong>Години роботи</strong><br>Пн-Пт: 09:00-18:00<br>Сб: 10:00-15:00<br>Нд: вихідний</p>
+        <p class="feedback__contact-item"><strong>Телефон</strong><br>+38 (0XX) XXX-XX-XX</p>
+        <p class="feedback__contact-item"><strong>Email</strong><br>info@duckids.ua</p>
+        <img class="feedback__img" src="/img/raw/formImg.png" alt="" width="200" height="200" loading="lazy" />
+      </div>
+      <form class="feedback__form" action="#" method="post" novalidate>
+        <div class="feedback__field">
+          <label class="feedback__label" for="feedback-name">Як до Вас звертатись?</label>
+          <input class="feedback__input" id="feedback-name" type="text" name="name" placeholder="" autocomplete="name" />
+        </div>
+        <div class="feedback__field">
+          <label class="feedback__label" for="feedback-phone">Ваш номер телефону</label>
+          <input class="feedback__input" id="feedback-phone" type="tel" name="phone" placeholder="+38 (0XX) XXX-XX-XX" autocomplete="tel" />
+        </div>
+        <fieldset class="feedback__fieldset">
+          <legend class="feedback__label">Як вам зручно зв'язатися?</legend>
+          <div class="feedback__radios feedback__radios--row">
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="contact" value="call" /><span class="feedback__radio-text">Дзвінок</span></label>
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="contact" value="telegram" /><span class="feedback__radio-text">Telegram</span></label>
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="contact" value="viber" /><span class="feedback__radio-text">Viber</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="feedback__fieldset">
+          <legend class="feedback__label">Вік дитини</legend>
+          <div class="feedback__radios feedback__radios--stack">
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="age" value="2-3" /><span class="feedback__radio-text">2-3 роки</span></label>
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="age" value="4-5" /><span class="feedback__radio-text">4-5 років</span></label>
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="age" value="6-7" /><span class="feedback__radio-text">6-7 років</span></label>
+            <label class="feedback__radio-label"><input class="feedback__radio" type="radio" name="age" value="8+" /><span class="feedback__radio-text">8+ років</span></label>
+          </div>
+        </fieldset>
+        <div class="feedback__field">
+          <label class="feedback__label" for="feedback-comment">Коментар чи запитання</label>
+          <textarea class="feedback__textarea" id="feedback-comment" name="comment" rows="4" placeholder=""></textarea>
+        </div>
+        <p class="feedback__privacy">Ваші дані в безпеці. Ми використовуємо їх лише для зв'язку з вами.</p>
+        <button type="submit" class="feedback__submit">Отримати консультацію</button>
+      </form>
+    </div>
+  </div>
+</section>

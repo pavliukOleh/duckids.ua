@@ -1,0 +1,11 @@
+@use "../tokens" as *;
+
+/* Duckids: Fixel Display, UI Kit text */
+body {
+  font-family: "Fixel Display", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: $color-text;
+  font-weight: 400;
+}

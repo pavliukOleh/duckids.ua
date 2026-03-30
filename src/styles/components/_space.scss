@@ -1,0 +1,72 @@
+@use "../tokens" as *;
+
+// Секція «Наш простір» — галерея по 3 фото в ряд, перенос вниз
+.space {
+  background: $color-bg-page-alt;
+  padding: 2.5rem 0 3rem;
+
+  @media (min-width: 1024px) {
+    padding: $section-padding-y-desktop 0 3rem;
+  }
+}
+
+.space__inner {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.space__title {
+  margin: 0 0 0.5rem 0;
+  font-size: $font-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-h2;
+  color: $color-text;
+  text-align: center;
+}
+
+.space__subtitle {
+  margin: 0 0 2rem 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-text;
+  text-align: center;
+}
+
+.space__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.space__img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+  display: block;
+  background: $color-bg-page-alt;
+}
+
+@media (max-width: 768px) {
+  .space__inner {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .space__title {
+    font-size: 32px;
+  }
+
+  .space__subtitle {
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .space__gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}

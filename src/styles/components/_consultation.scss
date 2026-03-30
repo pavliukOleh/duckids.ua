@@ -1,0 +1,152 @@
+@use "../tokens" as *;
+
+// Блок консультацій — фон блакитний, хвилі зверху/знизу
+.consultation {
+  position: relative;
+  background: $color-bg-blue;
+}
+
+// Хвилі — фон repeat-x, на 1440px+ плитка 1440px (як у футері)
+.consultation__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 20px;
+  min-height: 20px;
+  pointer-events: none;
+  line-height: 0;
+  z-index: 2;
+  background-image: url("/icons/Divider-Waves.svg");
+  background-repeat: repeat-x;
+  background-position: center;
+
+  @media (min-width: 1440px) {
+    background-size: 1440px 20px;
+  }
+}
+
+.consultation__wave--top {
+  top: -20px;
+}
+
+.consultation__wave--bottom {
+  bottom: -20px;
+  transform: rotate(180deg);
+}
+
+.consultation__inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+
+  @media (min-width: 1024px) {
+    padding-top: $section-padding-y-desktop;
+    padding-bottom: $section-padding-y-desktop;
+  }
+}
+
+// Відступ від заголовка до блоку з фото: 40px десктоп, 24px мобільний
+.consultation__title {
+  margin: 0 0 40px 0;
+  font-size: $font-h2;
+  font-weight: $font-weight-semibold;
+  line-height: $line-h2;
+  letter-spacing: 0;
+  color: $color-text;
+  text-align: center;
+}
+
+.consultation__body {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 40px; // геп між фото і текстом на десктопі
+  max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.consultation__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.consultation__img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.consultation__content {
+  min-width: 0;
+  max-width: 32rem;
+}
+
+.consultation__list {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  list-style: none;
+  font-size: 20px;
+  font-weight: $font-weight-semibold;
+  line-height: 1.4;
+  color: $color-text;
+
+  li {
+    position: relative;
+    padding-left: 2.25rem;
+    margin-bottom: 0.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.15em;
+      width: 24px;
+      height: 24px;
+      background-image: url("/icons/Icon-consultation.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+.consultation__footer {
+  margin: 0;
+  font-size: 20px;
+  font-weight: $font-weight-semibold;
+  line-height: 1.4;
+  color: $color-text;
+  padding-left: 36px;
+}
+
+@media (max-width: 1023px) {
+
+
+  .consultation__title {
+    margin-bottom: 24px;
+    font-size: $font-hero-h1-mobile;
+    line-height: 1;
+  }
+
+  .consultation__body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .consultation__media {
+    order: 1;
+  }
+
+  .consultation__content {
+    order: 2;
+  }
+
+  .consultation__list,
+  .consultation__footer {
+    font-size: 18px;
+  }
+}

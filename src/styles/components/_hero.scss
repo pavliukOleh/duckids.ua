@@ -1,0 +1,163 @@
+@use "../tokens" as *;
+
+.hero {
+  background: $color-bg-beige;
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  /* Текст — гнучка широка колонка; ілюстрація — фіксованіший блок (як на макеті) */
+  grid-template-columns: minmax(0, 1fr) minmax(340px, min(46%, 600px));
+  grid-template-areas:
+    "content media"
+    "actions media";
+  grid-template-rows: auto auto;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  row-gap: $hero-content-gap-desktop;
+  max-width: 1240px;
+  min-height: $hero-min-height-desktop;
+  padding-top: $hero-padding-y-desktop;
+  padding-bottom: $hero-padding-y-desktop;
+}
+
+@media (min-width: 768px) {
+  /* без додаткового горизонтального padding у hero — лишаємо лише від .container на мобільному */
+  .hero .hero__inner.container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.hero__content {
+  grid-area: content;
+  align-self: end;
+  min-width: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.hero__title {
+  margin: 0 0 $hero-headline-gap;
+  color: $color-text;
+  font-size: $font-hero-h1;
+  font-weight: $font-weight-semibold;
+  line-height: $line-hero-h1;
+  text-wrap: balance;
+}
+
+.hero__subtitle {
+  margin: 0;
+  max-width: 42rem;
+  color: $color-text;
+  font-size: $font-hero-lead;
+  font-weight: $font-weight-semibold;
+  line-height: $line-hero-lead;
+}
+
+.hero__media {
+  grid-area: media;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: center;
+  min-width: 0;
+}
+
+.hero__image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero__actions {
+  grid-area: actions;
+  align-self: start;
+}
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $btn-primary-min-height;
+  padding: $btn-primary-padding-y $btn-primary-padding-x;
+  border-radius: $btn-primary-radius;
+  background: $color-primary;
+  color: $color-text;
+  font-size: $btn-primary-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero__button:hover {
+  background: $color-primary-hover;
+}
+
+.hero__button:focus-visible {
+  background: $color-primary-hover;
+  outline: 2px solid $color-accent;
+  outline-offset: 3px;
+}
+
+.hero__button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 767px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "media"
+      "actions";
+    min-height: auto;
+    row-gap: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 3.75rem;
+    max-width: 100%;
+  }
+
+  .hero__content {
+    align-self: auto;
+    max-width: none;
+    text-align: center;
+  }
+
+  .hero__title {
+    margin-bottom: $hero-headline-gap;
+    font-size: $font-hero-h1-mobile;
+    line-height: 1;
+  }
+
+  .hero__subtitle {
+    max-width: none;
+    font-size: $font-hero-lead-mobile;
+    line-height: 1.45;
+  }
+
+  .hero__media,
+  .hero__actions {
+    width: 100%;
+  }
+
+  .hero__image {
+    max-width: min(100%, 320px);
+    margin-inline: auto;
+  }
+
+  .hero__button {
+    display: flex;
+    width: 100%;
+  }
+}

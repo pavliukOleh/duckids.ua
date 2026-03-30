@@ -1,0 +1,75 @@
+// Duckids — Figma UI Kit (154:956) + desktop 1:39 / mobile 1:807
+
+// --- Colors ---
+$color-text: #333333;
+$color-primary: #ffe046;
+$color-primary-hover: #ffb800;
+$color-bg-beige: #fff7e9;
+$color-bg-page: #fdf8ed;
+$color-bg-page-alt: #fdf7ed;
+$color-bg-blue: #e0f4f8;
+$color-accent: #05acd5;
+$color-white: #ffffff;
+$color-grey: #8e8e8e;
+$color-label: #6c6c6c;
+$color-footer: #1e93bd;
+$color-beak: #fd9f42;
+
+$color-header-bg: #ffffff;
+$color-input-bg: #fffbf4;
+$color-input-border: rgba(255, 224, 70, 0.45);
+$color-focus-ring: rgba(255, 224, 70, 0.35);
+
+// --- Typography ---
+$font-weight-semibold: 600;
+$font-weight-medium: 500;
+
+// Hero — desktop 1:39
+$font-hero-h1: 52px;
+$line-hero-h1: 1;
+$font-hero-lead: 22px;
+$line-hero-lead: 1.45;
+
+// Hero — mobile 1:807
+$font-hero-h1-mobile: 28px;
+$font-hero-lead-mobile: 18px;
+
+// Section titles (H2)
+$font-h2: 46px;
+$line-h2: 1;
+
+// Subtitles / card headings (H3 у макеті секцій)
+$font-h3: 24px;
+$letter-h3: -0.01em;
+$line-h3: 1;
+
+// --- Primary button (UI Kit) ---
+$btn-primary-min-height: 54px;
+$btn-primary-padding-y: 16px;
+$btn-primary-padding-x: 16px;
+$btn-primary-radius: 32px;
+$btn-primary-font-size: 16px;
+
+// --- Carousel / icon buttons ---
+$icon-nav-size: 32px;
+$icon-nav-radius: 20px;
+
+// --- Container ---
+$container-max: 1240px;
+
+// --- Header ---
+$header-nav-gap: 24px;
+$header-inner-gap: 32px;
+
+// --- Section rhythm (Figma p-[100px] на великих секціях) ---
+$section-padding-y-desktop: 100px;
+
+// --- Hero layout ---
+$hero-min-height-desktop: 740px;
+$hero-padding-y-desktop: 80px;
+$hero-content-gap-desktop: 48px;
+$hero-headline-gap: 16px;
+
+// --- Radius ---
+$radius-card: 1rem;
+$radius-pill: 9999px;

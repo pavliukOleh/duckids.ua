@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@layer base {
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; }
+  body { background: #fdf8ed; color: #4f4f4f; }
+  code { border-radius: 0.375rem; background: #f1f5f9; padding: 0.125rem 0.25rem; }
+}
+
+@layer components {
+  /* Максимальна ширина контейнера 1240px, всі секції центровані */
+  .container { @apply mx-auto w-full px-4; max-width: 1240px; }
+
+  .page { @apply min-h-screen flex flex-col; }
+  .main { @apply flex-1; }
+
+  .card { @apply rounded-2xl border border-slate-200 bg-white shadow-sm; }
+  .card-pad { @apply p-6; }
+
+  .h1 { @apply text-3xl font-bold tracking-tight; }
+  .lead { @apply mt-3 max-w-prose text-slate-700; }
+
+  .btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition; }
+  .btn-primary { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-slate-900 text-white hover:bg-slate-800; }
+  .btn-ghost { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition border border-slate-200 hover:bg-slate-50; }
+
+  .navlink { @apply text-sm hover:underline; }
+}

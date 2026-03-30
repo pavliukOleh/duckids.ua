@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{metaDescription}}" />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{{siteName}} • About</title>
+  </head>
+
+  <body class="page page--with-fixed-header">
+    {{> header}}
+
+    <main class="main">
+      <section class="container py-10">
+        <h1 class="h1">About page</h1>
+      </section>
+      <section id="feedback" class="container py-10" aria-labelledby="feedback-title">
+        <h2 id="feedback-title" class="h1">Форма зворотного зв’язку</h2>
+        <p class="lead">Тут буде форма консультації.</p>
+      </section>
+    </main>
+
+    {{> footer}}
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

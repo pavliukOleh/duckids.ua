@@ -1,0 +1,58 @@
+---
+description: 
+alwaysApply: true
+---
+
+You are working on a Vite multi-page frontend project.
+
+Tech stack:
+- Vite
+- Tailwind CSS v4
+- SCSS
+- Handlebars partials
+- Vanilla JavaScript modules
+
+Project structure:
+
+HTML pages are located in the project root.
+
+Reusable components are in:
+src/partials
+
+JS entry point:
+src/js/main.js
+
+JS modules:
+src/js/modules
+
+Styles:
+Tailwind base styles → src/styles/tailwind.css
+Custom styles → src/styles/app.scss
+
+Images:
+
+Original images:
+src/assets/img/raw
+
+Optimized images:
+src/assets/img/optimized
+
+Rules:
+
+Do not modify build configuration unless requested.
+
+Do not replace Tailwind with other frameworks.
+
+SCSS is used for custom styling.
+
+Tailwind utilities may be used for layout and spacing.
+
+Prefer semantic HTML.
+
+Avoid unnecessary wrappers.
+
+Keep JavaScript modular and place new scripts in src/js/modules.
+
+Do not move project files or change architecture.
+
+When creating reusable markup use Handlebars partials in src/partials.
